@@ -2,9 +2,9 @@
 
 // Timezone data arrays
 const featuredTimeZones = [
-    { zone: 'Europe/Lisbon', label: 'Portugal' },
-    { zone: 'Asia/Jerusalem', label: 'Israel' },
-    { zone: 'America/Sao_Paulo', label: 'Brasil' }
+    { zone: 'Europe/Lisbon', label: 'Lisbon' },
+    { zone: 'Asia/Jerusalem', label: 'Jerusalem' },
+    { zone: 'America/Sao_Paulo', label: 'Sao Paulo' }
 ];
 
 const timeZones = [
