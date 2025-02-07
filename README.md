@@ -36,3 +36,31 @@ This project is an interactive world time zone application created with the help
 ## 📜 License  
 
 This project is open-source and can be freely used for learning and improvements.
+
+# Additional information
+
+This project was created as a **prototype** to explore Github Copilot. It is still in its early stages and may have limitations or incomplete features.
+
+## 🚀 Project Status
+
+🛠️ **Phase:** Prototype  
+⚠️ **Disclaimer:** This project is still under development and may contain bugs or future changes.
+
+## 🔥 Possible Improvements and Future Features
+
+Here are some ideas to expand and enhance the project:
+
+- [ ] **Improved UI/UX** – Enhance design and user experience.
+- [ ] **Multi-platform support** – Adapt for mobile, desktop, or responsive web.
+- [ ] **Database integration** – Implement data persistence (e.g., Firebase, SQLite, PostgreSQL).
+- [ ] **User authentication** – Login via email/password or social media.
+- [ ] **Automated testing** – Improve reliability with unit and integration tests.
+- [ ] **Internationalization (i18n)** – Support for multiple languages.
+- [ ] **Offline mode** – Allow the app to work without an internet connection.
+- [ ] **Integration with external APIs** – Add extra functionalities, such as real-time data.
+- [ ] **Performance optimization** – Reduce loading times and resource consumption.
+
+## 💡 Additional Ideas
+
+If you have suggestions or would like to contribute, feel free to open an **issue** or submit a **pull request**! 😃
+
