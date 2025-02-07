@@ -31,7 +31,7 @@ This project is an interactive world time zone application created with the help
 
 ## 📸 Demo  
 
-![Preview](image.png)
+![Preview](preview.png)
 
 ## 📜 License  
 
