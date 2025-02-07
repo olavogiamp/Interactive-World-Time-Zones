@@ -1,3 +1,6 @@
+
+
+// Timezone data arrays
 const featuredTimeZones = [
     { zone: 'Europe/Lisbon', label: 'Portugal' },
     { zone: 'Asia/Jerusalem', label: 'Israel' },
@@ -16,15 +19,127 @@ const timeZones = [
     { zone: 'Pacific/Auckland', label: 'Auckland' }
 ];
 
-// Populate timezone select
-const timezoneSelect = document.getElementById('timezoneSelect');
-Intl.supportedValuesOf('timeZone').forEach(timezone => {
-    const option = document.createElement('option');
-    option.value = timezone;
-    option.textContent = timezone.replace(/_/g, ' ');
-    timezoneSelect.appendChild(option);
+// Search interface variables
+let timezones = [];
+const timezoneSearch = document.getElementById('timezoneSearch');
+const timezoneDropdown = document.getElementById('timezoneDropdown');
+let selectedIndex = -1;
+
+// Initialize timezones array
+timezones = Intl.supportedValuesOf('timeZone').map(timezone => ({
+    value: timezone,
+    label: timezone.replace(/_/g, ' ')
+}));
+
+// Function to filter and show matching timezones
+function filterTimezones(searchText) {
+    const searchLower = searchText.toLowerCase();
+    return timezones.filter(timezone => 
+        timezone.label.toLowerCase().includes(searchLower)
+    );
+}
+
+// Function to render the dropdown options
+function renderDropdown(filteredTimezones) {
+    timezoneDropdown.innerHTML = '';
+    filteredTimezones.forEach((timezone, index) => {
+        const option = document.createElement('div');
+        option.className = 'timezone-option';
+        option.textContent = timezone.label;
+        option.dataset.value = timezone.value;
+        if (index === selectedIndex) {
+            option.classList.add('highlighted');
+        }
+        option.addEventListener('click', () => selectTimezone(timezone.value));
+        timezoneDropdown.appendChild(option);
+    });
+}
+
+// Function to select a timezone
+function selectTimezone(value) {
+    const timezone = timezones.find(tz => tz.value === value);
+    if (timezone) {
+        // Limpa o campo de pesquisa após a seleção
+        timezoneSearch.value = '';
+        timezoneDropdown.classList.remove('show');
+        
+        // Cria e adiciona o novo relógio
+        const newTimeZone = {
+            zone: timezone.value,
+            label: timezone.label
+        };
+        const clockElement = createClockElement(newTimeZone);
+        document.getElementById('clockContainer').appendChild(clockElement);
+        updateTime();
+    }
+}
+
+// Event listeners for search functionality
+timezoneSearch.addEventListener('focus', () => {
+    const filtered = filterTimezones(timezoneSearch.value);
+    renderDropdown(filtered);
+    timezoneDropdown.classList.add('show');
 });
 
+timezoneSearch.addEventListener('input', () => {
+    selectedIndex = -1;
+    const filtered = filterTimezones(timezoneSearch.value);
+    renderDropdown(filtered);
+    timezoneDropdown.classList.add('show');
+});
+
+// Handle keyboard navigation
+timezoneSearch.addEventListener('keydown', (e) => {
+    const options = timezoneDropdown.querySelectorAll('.timezone-option');
+    const filtered = filterTimezones(timezoneSearch.value);
+    
+    switch(e.key) {
+        case 'ArrowDown':
+            e.preventDefault();
+            selectedIndex = Math.min(selectedIndex + 1, filtered.length - 1);
+            renderDropdown(filtered);
+            const nextOption = options[selectedIndex];
+            if (nextOption) nextOption.scrollIntoView({ block: 'nearest' });
+            break;
+            
+        case 'ArrowUp':
+            e.preventDefault();
+            selectedIndex = Math.max(selectedIndex - 1, -1);
+            renderDropdown(filtered);
+            const prevOption = options[selectedIndex];
+            if (prevOption) prevOption.scrollIntoView({ block: 'nearest' });
+            break;
+            
+        case 'Enter':
+            e.preventDefault();
+            if (selectedIndex >= 0 && filtered[selectedIndex]) {
+                selectTimezone(filtered[selectedIndex].value);
+            }
+            break;
+            
+        case 'Escape':
+            timezoneDropdown.classList.remove('show');
+            break;
+            
+        default:
+            // If user types a letter, filter to show matching timezones
+            if (e.key.length === 1 && e.key.match(/[a-z]/i)) {
+                selectedIndex = -1;
+                const filtered = filterTimezones(timezoneSearch.value + e.key);
+                renderDropdown(filtered);
+                timezoneDropdown.classList.add('show');
+            }
+    }
+});
+
+// Close dropdown when clicking outside
+document.addEventListener('click', (e) => {
+    if (!timezoneSearch.contains(e.target) && !timezoneDropdown.contains(e.target)) {
+        timezoneDropdown.classList.remove('show');
+    }
+});
+
+// Clock creation and management functions
 function createClockElement(timeZone, isFeatured = false) {
     const clockDiv = document.createElement('div');
     clockDiv.className = `clock ${isFeatured ? 'featured' : ''}`;
@@ -45,6 +160,7 @@ function createClockElement(timeZone, isFeatured = false) {
     return clockDiv;
 }
 
+// Drag and drop functionality
 function dragStart(e) {
     e.target.classList.add('dragging');
 }
@@ -90,20 +206,7 @@ function removeClock(button) {
     button.closest('.clock').remove();
 }
 
-function addNewTimezone() {
-    const selectedZone = timezoneSelect.value;
-    if (selectedZone) {
-        const newTimeZone = {
-            zone: selectedZone,
-            label: selectedZone.split('/').pop().replace(/_/g, ' ')
-        };
-        
-        const clockElement = createClockElement(newTimeZone);
-        document.getElementById('clockContainer').appendChild(clockElement);
-        updateTime();
-    }
-}
-
+// Time update functionality
 function updateTime() {
     document.querySelectorAll('.clock').forEach(clock => {
         const timeElement = clock.querySelector('.time');

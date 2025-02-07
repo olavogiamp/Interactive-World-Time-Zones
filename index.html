@@ -10,10 +10,10 @@
     <h1>Interactive World Time Zones</h1>
     
     <div class="controls">
-        <select id="timezoneSelect" class="timezone-select">
-            <option value="">Select a timezone...</option>
-        </select>
-        <button class="add-button" onclick="addNewTimezone()">Add Timezone</button>
+        <div class="timezone-select-container">
+            <input type="text" id="timezoneSearch" class="timezone-search" placeholder="Search timezone..." autocomplete="off">
+            <div id="timezoneDropdown" class="timezone-dropdown"></div>
+        </div>
     </div>
 
     <div class="featured-container" id="featuredContainer"></div>

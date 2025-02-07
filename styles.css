@@ -17,6 +17,14 @@ body {
     border-radius: 10px;
     width: 100%;
     max-width: 1200px;
+    display: flex;
+    justify-content: center; /* Centraliza o conteúdo */
+}
+
+.timezone-select-container {
+    position: relative;
+    width: 400px; /* Aumentando um pouco a largura para melhor proporção */
+    /* Remove margin-right já que agora está centralizado */
 }
 
 .timezone-select {
@@ -137,3 +145,68 @@ h1 {
     width: 100%;
     max-width: 1200px;
 }
+
+.timezone-select-container {
+    position: relative;
+    width: 300px;
+    margin-right: 10px;
+}
+
+.timezone-search {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    background: #333;
+    color: #fff;
+    border: 1px solid #00ff88;
+    border-radius: 5px;
+    outline: none;
+}
+
+.timezone-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    max-height: 300px;
+    overflow-y: auto;
+    background: #333;
+    border: 1px solid #00ff88;
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+    z-index: 1000;
+}
+
+.timezone-dropdown.show {
+    display: block;
+}
+
+.timezone-option {
+    padding: 10px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.timezone-option:hover {
+    background: #444;
+}
+
+.timezone-option.highlighted {
+    background: #444;
+}
+
+/* Add custom scrollbar styles */
+.timezone-dropdown::-webkit-scrollbar {
+    width: 8px;
+}
+
+.timezone-dropdown::-webkit-scrollbar-track {
+    background: #333;
+}
+
+.timezone-dropdown::-webkit-scrollbar-thumb {
+    background: #00ff88;
+    border-radius: 4px;
+}
+
