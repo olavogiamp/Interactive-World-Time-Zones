@@ -2,6 +2,13 @@
 
 This project is an interactive world time zone application created with the help of GitHub Copilot. It allows users to view the local time of multiple regions worldwide in an intuitive and customizable way.
 
+This project was created as a **prototype** to explore Github Copilot. It is still in its early stages and may have limitations or incomplete features.
+
+## 🚀 Project Status
+
+🛠️ **Phase:** Prototype  
+⚠️ **Disclaimer:** This project is still under development and may contain bugs or future changes.
+
 ## 📌 Access the Project  
 🔗 [Interactive World Time Zones](https://olavogiamp.github.io/Interactive-World-Time-Zones/)
 
@@ -36,15 +43,6 @@ This project is an interactive world time zone application created with the help
 ## 📜 License  
 
 This project is open-source and can be freely used for learning and improvements.
-
-# Additional information
-
-This project was created as a **prototype** to explore Github Copilot. It is still in its early stages and may have limitations or incomplete features.
-
-## 🚀 Project Status
-
-🛠️ **Phase:** Prototype  
-⚠️ **Disclaimer:** This project is still under development and may contain bugs or future changes.
 
 ## 🔥 Possible Improvements and Future Features
 
