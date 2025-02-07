@@ -16,7 +16,7 @@ const timeZones = [
     { zone: 'Asia/Tokyo', label: 'Tokyo' },
     { zone: 'Asia/Dubai', label: 'Dubai' },
     { zone: 'Australia/Sydney', label: 'Sydney' },
-    { zone: 'Pacific/Auckland', label: 'Auckland' }
+    { zone: 'Pacific/Auckland', label: 'Auckland' },
 ];
 
 // Search interface variables
