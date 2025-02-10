@@ -4,6 +4,10 @@ This project is an interactive world time zone application created with the help
 
 This project was created as a **prototype** to explore Github Copilot. It is still in its early stages and may have limitations or incomplete features.
 
+## 📸 Demo  
+
+![Preview](preview.png)
+
 ## 🚀 Project Status
 
 🛠️ **Phase:** Prototype  
@@ -35,10 +39,6 @@ This project was created as a **prototype** to explore Github Copilot. It is sti
 3. Click on a time zone from the list to add it to the interface.  
 4. Drag the clocks to rearrange them as desired.  
 5. Remove a clock by clicking the delete button.  
-
-## 📸 Demo  
-
-![Preview](preview.png)
 
 ## 📜 License  
 
